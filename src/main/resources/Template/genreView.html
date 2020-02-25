@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+    <title>WeCanCodeIT Library Books</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/layout.css" rel="stylesheet">
+</head>
+
+<body>
+<header class="header">
+    <h1 class="header__title">Welcome to you favorite Movie platform</h1>
+    <h2 th:text="${genre.name}">name</h2>
+</header>
+<section class="post-list">
+    <h2 class="post-list__heading">Here is a list of our Movies:</h2>
+    <nav class="post-list-nav">
+        <ul class="post-list-links">
+            <li class="post-list-links__post" th:each="post:${genre.post}">
+                <a class="post-list-links__link" th:href="@{'/post/'+ ${post.id}}"
+                   th:text="${post.title}">Refactoring</a>
+            </li>
+
+        </ul>
+    </nav>
+    <a class="nav__home" href="/genre">back to genre</a>
+    <form method="POST" th:action="'/genre/'+ ${genre.name} + '/add-post'">
+        <input name="genreId" th:value="${genre.id}" type="hidden">
+        <input type="text">
+    </form>
+</section>
+</body>
+
+</html>

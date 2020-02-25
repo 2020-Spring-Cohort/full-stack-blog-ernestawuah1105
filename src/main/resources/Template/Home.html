@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="GenreStyle.css">
+</head>
+<body>
+<section class="homepage_details">
+    <h1 class="homepage_title1">MOVIES! one of the best forms of entertainment.</h1>
+    <h2 class="homepage_title2">Make a choice and prepare to have fun</h2>
+    <p class="homepage_Movie_description">
+        Movie serves as a form of visual communication, with the ultimate aim of telling stories. And mostly leaves
+        a lasting impression in the lives of viewers.</p>
+</section>
+
+<section class="homepage_links">
+    <ul>
+        <li>
+    <a class="Action_link" href ="CategoryTemplate.html">Action Movie</a>
+        </li>
+        <li>
+    <a class="Comedy_link" href ="CategoryTemplate.html">Comedy Movie</a>
+        </li>
+    </ul>
+</section>
+
+    <div  th:each="genre:${genre}">
+
+
+
+
+
+        <a th:text="${genre.type}" th:href="@{'/genres/'+ ${genre.id}}">genreName</a>
+
+    </div>
+
+
+
+</section>
+
+</body>
+</html>

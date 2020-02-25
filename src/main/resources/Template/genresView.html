@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <title>Title</title>
+</head>
+<body>
+<hi>Movies Platform</hi>
+<h2 th:each="genra:${genres}"><a th:href="@{'/genres/'+${genra.title}}"
+                                 th:text="${campus.name}">Genre</a>
+
+</h2>
+<form action="add-genre" method="POST">
+    <input name="name" type="text">
+    <button type="submit">Add Genre</button>
+</form>
+
+
+</body>
+</html>
