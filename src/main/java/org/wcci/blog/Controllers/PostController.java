@@ -1,10 +1,10 @@
-package org.wcci.blog;
+package org.wcci.blog.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wcci.blog.Models.Post;
-import org.wcci.blog.Repositories.PostStorage;
+import org.wcci.blog.Storage.PostStorage;
 
 
 @Controller

@@ -25,6 +25,9 @@ public class Author {
         this.lastName = lastName;
     }
 
+    public Author(String test) {
+    }
+
     public Long getId() {
         return id;
     }

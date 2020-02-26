@@ -1,4 +1,4 @@
-package org.wcci.blog.Repositories;
+package org.wcci.blog.Storage;
 
 import org.wcci.blog.Models.Author;
 

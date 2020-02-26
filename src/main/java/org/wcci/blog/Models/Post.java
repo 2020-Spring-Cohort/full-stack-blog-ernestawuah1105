@@ -12,7 +12,7 @@ public class Post {
     private String title;
     private String body;
     @ManyToMany
-    private Collection<Hashtag> hashtag;
+    private Collection<Hashtag> hashtags;
     @ManyToOne
     private Author author;
     @ManyToOne
@@ -27,11 +27,15 @@ public class Post {
     }
     public Post (){
     }
+    public Post(String title, String postBody) {
+        this.title = title;
+        this.body = postBody;
+    }
+
+    public long getId() {return id; }
+    public String getBody() {return body; }
     public String getTitle() {
         return title;
-    }
-    public String getPostBody() {
-        return body;
     }
     public Author getAuthor() {
         return author;
@@ -45,13 +49,12 @@ public class Post {
     public Collection<Hashtag> getHashtags() {
         return hashtags;
     }
-}
+
     @Override
     public String toString() {
-        String description;
-        return "Book{" +
+        return "Post{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
+                ", genre='" + genre + '\'' +
                 ", title='" + title + '\'' +
                 '}';
     }
@@ -63,28 +66,24 @@ public class Post {
 
         Post post = (Post) o;
 
-        if (getId() != null ? !getId().equals(post.getId()) : post.getId() != null) return false;
-        if (getDescription() != null ? !getDescription().equals(post.getDescription()) : post.getDescription() != null)
+        if (getId() != 0 ? !(getId() == post.getId()) : post.getId() != 0) return false;
+        if (getAuthor() != null ? !getAuthor().equals(post.getAuthor()) : post.getAuthor() != null)
             return false;
         if (getGenre() != null ? !getGenre().equals(post.getGenre()) : post.getGenre() != null) return false;
+        if (getBody() != null ? !getBody().equals(post.getBody()) : post.getBody() != null) return false;
         return getTitle() != null ? getTitle().equals(post.getTitle()) : post.getTitle() == null;
     }
 
-    private Object getDescription() {
-    }
 
-    private Object getId() {
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getGenre() != null ? getGenre().hashCode() : 0);
-        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
-        return result;
-    }
+    public void addHasTag(Hashtag hashTOAdd) {
+    hashtags.add(hashTOAdd);
 }
+
+
+}
+
+
+
 
 
 

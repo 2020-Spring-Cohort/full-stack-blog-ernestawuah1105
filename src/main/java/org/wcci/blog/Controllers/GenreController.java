@@ -1,11 +1,13 @@
-package org.wcci.blog;
+package org.wcci.blog.Controllers;
 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.Models.Genre;
-import org.wcci.blog.Repositories.GenreStorage;
+import org.wcci.blog.Storage.AuthorStorage;
+import org.wcci.blog.Storage.GenreStorage;
+import org.wcci.blog.Storage.PostStorage;
 
 @Controller
 public class GenreController {
@@ -13,6 +15,10 @@ public class GenreController {
 
     public GenreController(GenreStorage genreStorage) {
         this.genreStorage = genreStorage;
+    }
+
+    public GenreController(GenreStorage genreStorage, AuthorStorage authorStorage, PostStorage bookStorage) {
+
     }
 
     @RequestMapping("/genres")
@@ -23,8 +29,8 @@ public class GenreController {
 
     @GetMapping("/genres/{genreLocation}")
     public String displaySingleGenre(@PathVariable String genreLocation, Model model) {
-        Genre retrievedGenre = genreStorage.findGenreByLocation(genreLocation);
-        model.addAttribute("campus", retrievedGenre);
+        Genre retrievedGenre = genreStorage.findGenreByName(genreLocation);
+        model.addAttribute("genre", retrievedGenre);
         return "genreView";
     }
     @PostMapping("/add-genre")
@@ -38,6 +44,9 @@ public class GenreController {
     }
 
 
+    public void displaySinglePost(String los_testa, Model mockModel) {
+
+    }
 }
 
 
