@@ -19,12 +19,12 @@ public class MapGenreStorageTest {
 
     @Test
     public void shouldRetrieveSingleCampusByLocation() {
-        Genre testCampus1 = new Genre("Test");
-        Genre testCampus2 = new Genre("Test");
+        Genre testGenre1 = new Genre("Test");
+        Genre testGenre2 = new Genre("Test");
         GenreStorage underTest = new MapGenreStorage();
         underTest.store(testGenre1);
         underTest.store(testGenre2);
-        Genre retrievedCampus1 = underTest.findGenreByName("Test");
+        Genre retrievedGenre1 = underTest.findGenreByName("Test");
         Genre retrievedGenre2 = underTest.findGenreByName("Test");
         assertThat(retrievedGenre1).isEqualTo(testGenre1);
         assertThat(retrievedGenre2).isEqualTo(testGenre2);

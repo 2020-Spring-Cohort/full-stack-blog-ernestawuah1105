@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.test.web.reactive.server.StatusAssertions;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wcci.blog.Controllers.GenreController;
@@ -22,6 +23,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class GenreControllerTest {
     private MockMvc mockMvc;
@@ -45,7 +48,6 @@ public class GenreControllerTest {
     @Test
     public void shouldReturnViewWithOneGenre() {
         Genre testGenre = new Genre("TEST");
-        Object genreStorage = new Object();
         when(genreStorage.findGenreByName( "TEST")).thenReturn(testGenre);
 
         underTest.displaySingleGenre(" TEST", mockModel);
@@ -64,7 +66,7 @@ public class GenreControllerTest {
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception {
         Genre testGenre = new Genre("TEST");
-        when(genreStorage.findgenreByName("TEST")).thenReturn(testGenre);
+        when(genreStorage.findGenreByName("TEST")).thenReturn(testGenre);
 
         Object tester = new Object();
         mockMvc.perform(get("/genre/ TEST"))
@@ -74,17 +76,11 @@ public class GenreControllerTest {
                 .andExpect(model().attribute("genre", tester));
     }
 
-    private StatusAssertions status() {
-
-
-    }
-
     @Test
     public void genreEndPointDisplaysAllGenre() throws Exception {
         Genre testGenre = new Genre("test");
 
         List<Genre> genreCollection = Collections.singletonList(testGenre);
-        Object genreStorage = new genreCollection();
         when(genreStorage.findAllGenre()).thenReturn(genreCollection);
         mockMvc.perform(get("/genre"))
                 .andDo(print())
@@ -116,4 +112,4 @@ public class GenreControllerTest {
     }
 }
 
-}
+

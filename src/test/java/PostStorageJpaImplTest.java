@@ -1,4 +1,3 @@
-import javafx.beans.binding.BooleanExpression;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.wcci.blog.Models.Author;
@@ -12,8 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.mockito.Mockito.*;
 
-public class PostStorageJpaImpl {
-    public PostStorageJpaImpl(Object postRepo) {
+public class PostStorageJpaImplTest {
+    public PostStorageJpaImplTest(Object postRepo) {
 
     }
 
@@ -25,7 +24,7 @@ public class PostStorageJpaImpl {
         @BeforeEach
         void setUp() {
             postRepo = mock(PostRepository.class);
-            underTest = (PostStorage) new PostStorageJpaImpl(postRepo);
+            underTest = (PostStorage) new PostStorageJpaImplTest(postRepo);
             Genre testGenre = new Genre("Test");
             Author testAuthor = new Author("Test");
             testPost = new Post("Test Book", "Test Description", testGenre, testAuthor);
