@@ -16,8 +16,11 @@ import org.wcci.blog.Storage.PostStorage;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 public class PostControllerTest {
-    /*private PostController underTest;
+    private PostController underTest;
     private Model model;
     private PostStorage mockStorage;
     private Post testPost;
@@ -27,11 +30,11 @@ public class PostControllerTest {
     void setUp() {
         mockStorage = mock(PostStorage.class);
         hashTagRepo = mock(HashTagRepository.class);
-        underTest = new PostController(mockStorage, hashTagRepo);
+        underTest = new PostController(mockStorage);
         model = mock(Model.class);
         Genre testGenre = new Genre("Test");
         Author testAuthor = new Author("Test");
-        testPost = new Post("Test", "Test", testCampus, testAuthor);
+        testPost = new Post("Test", "Test", testGenre, testAuthor);
         when(mockStorage.findPostById(1L)).thenReturn(testPost);
 
     }
@@ -56,5 +59,5 @@ public class PostControllerTest {
                 .andExpect(model().attributeExists("post"))
                 .andExpect(model().attribute("post", testPost));
     }
-*/
+
 }

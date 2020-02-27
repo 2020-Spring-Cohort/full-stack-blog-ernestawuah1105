@@ -17,9 +17,14 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 public class GenreControllerTest {
-    /*private MockMvc mockMvc;
+    private MockMvc mockMvc;
     private GenreController underTest;
     private GenreStorage campusStorage;
     private Model mockModel;
@@ -41,12 +46,12 @@ public class GenreControllerTest {
     public void shouldReturnViewWithOneGenre() {
         Genre testGenre = new Genre("TEST");
         Object genreStorage = new Object();
-        when(genreStorage.findGenreByname( "TEST")).thenReturn(testGenre);
+        when(genreStorage.findGenreByName( "TEST")).thenReturn(testGenre);
 
         underTest.displaySingleGenre(" TEST", mockModel);
 
 
-        verify(genreStorage).findGenreByname("TEST");
+        verify(genreStorage).findGenreByName("TEST");
         verify(mockModel).addAttribute("genre", testGenre);
     }
 
@@ -59,7 +64,7 @@ public class GenreControllerTest {
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception {
         Genre testGenre = new Genre("TEST");
-        when(genreStorage.findgenreByname("TEST")).thenReturn(testGenre);
+        when(genreStorage.findgenreByName("TEST")).thenReturn(testGenre);
 
         Object tester = new Object();
         mockMvc.perform(get("/genre/ TEST"))
@@ -110,5 +115,5 @@ public class GenreControllerTest {
         verify(campusStorage).store(new Genre("Test "));
     }
 }
-*/
+
 }
