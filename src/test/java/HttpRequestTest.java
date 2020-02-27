@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.wcci.blog.Models.Genre;
 import org.wcci.blog.Storage.GenreStorage;
 
+import static org.springframework.test.util.AssertionErrors.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class HttpRequestTest {
 
     @LocalServerPort
@@ -40,8 +43,6 @@ public class HttpRequestTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
-    private BooleanExpression assertThat(HttpStatus statusCode) {
-    }
 
 }
 

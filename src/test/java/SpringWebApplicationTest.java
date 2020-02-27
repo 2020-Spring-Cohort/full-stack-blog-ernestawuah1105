@@ -12,17 +12,16 @@ import org.wcci.blog.Storage.GenreStorage;
 import org.wcci.blog.Storage.PostStorage;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class SpringWebApplicationTest {
 
     @MockBean
-    PostStorage bookStorage;
-    @MockBean
-    AuthorStorage authorStorage;
+    GenreStorage genreStorage;
     @Autowired
     private MockMvc mockMvc;
-    @MockBean
-    private GenreStorage campusStorage;
 
     @Test
     public void shouldReceiveOKFromGenresEndpoint() throws Exception {
@@ -32,14 +31,10 @@ public class SpringWebApplicationTest {
     }
 
 
-
-
-
     @Test
     public void shouldReceiveOKFromSingleGenreEndpoint() throws Exception {
         Genre testGenre = new Genre("Test");
-        Object genreStorage = new Object();
-        when(genreStorage.findGenreByname("Test")).thenReturn(testGenre);
+        when(genreStorage.findGenreByName("Test")).thenReturn(testGenre);
         mockMvc.perform(get("/genre/Test"))
                 .andExpect(status().isOk());
     }
@@ -47,4 +42,4 @@ public class SpringWebApplicationTest {
 
 }
 
-}
+

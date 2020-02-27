@@ -10,7 +10,10 @@ import org.wcci.blog.Storage.PostStorage;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class WebLayerTest {
     @MockBean
@@ -37,7 +40,7 @@ public class WebLayerTest {
     @Test
     public void shouldReceiveOKFromSingleGenreEndpoint() throws Exception {
         Genre testGenre = new Genre("Test");
-        when(mockStorage.findGenreByname("Test")).thenReturn(testGenre);
+        when(mockStorage.findGenreByName("Test")).thenReturn(testGenre);
         mockMvc.perform(get("/genre/Test"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("genreView"))

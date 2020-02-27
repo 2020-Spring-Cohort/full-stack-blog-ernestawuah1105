@@ -9,6 +9,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     Object findById(long l);
 
-     Object save(Post testPost);
+     Post save(Post testPost);
 }
 

@@ -3,6 +3,7 @@ package org.wcci.blog.Repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.wcci.blog.Models.Genre;
 
+import java.util.Collection;
 import java.util.Optional;
 
 public interface GenreRepository extends CrudRepository<Genre, Long> {
@@ -11,9 +12,9 @@ public interface GenreRepository extends CrudRepository<Genre, Long> {
 
     Object findByname(String test);
 
-    Object findAll();
+    Collection<Genre> findAll();
 
-    Object save(Genre testGenre);
+    Genre save(Genre testGenre);
 }
 
 

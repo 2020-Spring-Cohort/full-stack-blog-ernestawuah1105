@@ -8,6 +8,7 @@ import org.wcci.blog.Repositories.PostRepository;
 import org.wcci.blog.Storage.PostStorage;
 
 import java.util.Optional;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.mockito.Mockito.*;
 
@@ -41,9 +42,10 @@ public class PostStorageJpaImpl {
 
 
         @Test
-        public void shouldStoreBook() {
+        public void shouldStorePost() {
             underTest.store(testPost);
             verify(postRepo).save(testPost);
         }
     }
+
 }

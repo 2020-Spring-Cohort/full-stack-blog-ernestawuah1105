@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 
 public class GenreControllerTest {
-    private MockMvc mockMvc;
+    /*private MockMvc mockMvc;
     private GenreController underTest;
     private GenreStorage campusStorage;
     private Model mockModel;
@@ -110,5 +110,5 @@ public class GenreControllerTest {
         verify(campusStorage).store(new Genre("Test "));
     }
 }
-
+*/
 }

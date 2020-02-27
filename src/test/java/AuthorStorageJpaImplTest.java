@@ -8,7 +8,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class AuthorStorageJpaImplTest {
-    @Test
+   @Test
     public void shouldStoreAuthor() {
         AuthorRepository authorRepo = mock(AuthorRepository.class);
         AuthorStorage underTest = new AuthorStorageJpaImpl(authorRepo);

@@ -34,11 +34,6 @@ public class GenreStorageJpaImpl implements GenreStorage {
     }
 
     @Override
-    public Genre findGenreByname(String test) {
-        return null;
-    }
-
-    @Override
     public Object findAllGenre() {
         return null;
     }

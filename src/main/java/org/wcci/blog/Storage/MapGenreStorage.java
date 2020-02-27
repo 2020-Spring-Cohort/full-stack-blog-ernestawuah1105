@@ -28,10 +28,6 @@ public class MapGenreStorage implements GenreStorage {
         return genres.get(genreLocation);
     }
 
-    @Override
-    public Genre findGenreByname(String test) {
-        return null;
-    }
 
     @Override
     public Object findAllGenre() {

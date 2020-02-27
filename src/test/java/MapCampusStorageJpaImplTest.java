@@ -4,6 +4,8 @@ import org.wcci.blog.Storage.GenreStorage;
 import org.wcci.blog.Storage.MapGenreStorage;
 
 import java.util.Collection;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class MapCampusStorageJpaImplTest {
     private Object String;
@@ -24,14 +26,14 @@ public class MapCampusStorageJpaImplTest {
     @Test
     public void shouldRetrieveSingleGenreByname() {
         Genre testGenre1 = new Genre("Test");
-        Genre testGenre2 = new String (String) test = "Test";
+        Genre testGenre2 = new Genre("Test2");
         GenreStorage underTest = new MapGenreStorage();
         underTest.store(testGenre1);
         underTest.store(testGenre2);
-        Genre retrievedGenre1 = underTest.findGenreByname("Test");
-        Genre retrievedGenre2 = underTest.findGenreByname("Test");
-        assertThat(retrievedGenre1).isEqualTo(testGenre1);
-        assertThat(retrievedGenre2).isEqualTo(testGenre2);
+        Genre retrievedGenre1 = underTest.findGenreByName("Test");
+        Genre retrievedGenre2 = underTest.findGenreByName("Test2");
+        assertTrue(retrievedGenre1.equals(testGenre1));
+        assertTrue(retrievedGenre2.equals(testGenre2));
     }
 }
-}
+

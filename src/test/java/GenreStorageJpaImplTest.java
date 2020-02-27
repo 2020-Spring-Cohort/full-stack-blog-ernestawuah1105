@@ -8,21 +8,24 @@ import org.wcci.blog.Storage.GenreStorageJpaImpl;
 import java.util.Collections;
 import java.util.Optional;
 
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
 
 public class GenreStorageJpaImplTest {
     private Object Genre1;
+    private GenreRepository mockGenreRepo;
 
     @Test
     public void shouldFindAllGenres() {
-        GenreRepository mockGenreRepo = mock(GenreRepository.class);
+        mockGenreRepo = mock(GenreRepository.class);
         Genre testGenre = new Genre("Test");
         GenreStorage underTest = new GenreStorageJpaImpl(mockGenreRepo);
         when(mockGenreRepo.findAll()).thenReturn(Collections.singletonList(testGenre));
         underTest.store(testGenre);
         verify(mockGenreRepo).save(testGenre);
-        assertThat(underTest.findAllGenre()).contains(testGenre);
+        assertTrue(mockGenreRepo.findAll().contains(testGenre));
     }
 
     @Test
@@ -32,8 +35,7 @@ public class GenreStorageJpaImplTest {
         Genre testGenre2 = new Genre("Test");
         GenreStorage underTest = new GenreStorageJpaImpl(mockGenreRepo);
         Genre testGenre1 = new Genre();
-        Genre test = new Genre();
-        underTest.store(test Genre1);
+        underTest.store(testGenre1);
         underTest.store(testGenre2);
         Optional<Genre> us1Optional = Optional.of(testCampus1);
         Object testGenre1Optional = new Object();
@@ -42,13 +44,11 @@ public class GenreStorageJpaImplTest {
         Optional<Genre> testGenre2Optional = Optional.of(testGenre2);
         when(mockGenreRepo.findByname("Test")).thenReturn(testGenre2Optional);
 
-        Genre retrievedCampus1 = underTest.findGenreByname("Test");
-        Genre retrievedGenre2 = underTest.findGenreByname("Test");
-        assertThat(retrievedCampus1).isEqualTo(testGenre1);
-        assertThat(retrievedGenre2).isEqualTo(testGenre2);
+        Genre retrievedCampus1 = underTest.findGenreByName("Test");
+        Genre retrievedGenre2 = underTest.findGenreByName("Test");
+        assertTrue(retrievedCampus1.equals(testGenre1));
+        assertTrue(retrievedGenre2.equals(testGenre2));
     }
-
-
 
 }
 
